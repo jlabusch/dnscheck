@@ -15,12 +15,13 @@ function log(){
 }
 
 function pretty(){
+    local IP=$(echo "$1" | cut -d, -f 1)
     local NAME=$(echo "$1" | cut -d, -f 2)
     local ORG=$(echo "$1" | cut -d, -f 3)
     local COUNTRY=$(echo "$1" | cut -d, -f 4)
     local CITY=$(echo "$1" | cut -d, -f 5)
 
-    echo "${ORG:-unknown}/${NAME:-unnamed} in ${CITY:-unknown}/${COUNTRY:-unknown}"
+    echo "$IP (org=\"${ORG:-unknown}\", name=\"${NAME:-unnamed}\") in ${CITY:-unknown}/${COUNTRY:-unknown}"
 }
 
 function run_dig(){
